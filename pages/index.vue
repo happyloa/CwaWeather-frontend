@@ -19,6 +19,9 @@
         :weather-data="weatherData"
         :loading="isLoading"
         :error="hasError" />
+
+      <!-- Footer -->
+      <AppFooter />
     </div>
   </div>
 </template>
