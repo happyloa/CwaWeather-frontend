@@ -47,7 +47,7 @@
           forecast.comfort
         }}</span>
       </div>
-      <div class="flex items-center gap-2">
+      <div v-if="forecast.windSpeed" class="flex items-center gap-2">
         <span class="text-xl">💨</span>
         <span class="text-sm text-gray-600 dark:text-gray-400">{{
           forecast.windSpeed
