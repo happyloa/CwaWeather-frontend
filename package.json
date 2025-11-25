@@ -1,5 +1,5 @@
 {
-  "name": "CwaWeather-frontend",
+  "name": "weather-frontend",
   "type": "module",
   "private": true,
   "scripts": {
