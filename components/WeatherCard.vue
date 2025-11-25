@@ -1,11 +1,17 @@
 <template>
   <div
-    ref="cardRef"
-    class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-800 transition-smooth">
+    class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-800 transition-smooth"
+    data-aos="fade-up"
+    :data-aos-delay="index * 100">
     <div class="flex justify-between items-start mb-4">
-      <div class="text-sm text-gray-500 dark:text-gray-400">
-        {{ formatTime(forecast.startTime) }} -
-        {{ formatTime(forecast.endTime) }}
+      <div class="space-y-1">
+        <div class="text-xs text-gray-400 dark:text-gray-500">
+          {{ formatDate(forecast.startTime) }}
+        </div>
+        <div class="text-sm text-gray-500 dark:text-gray-400">
+          {{ formatTime(forecast.startTime) }} -
+          {{ formatTime(forecast.endTime) }}
+        </div>
       </div>
       <div class="text-3xl">
         {{ getWeatherIcon(forecast.weather) }}
@@ -52,16 +58,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { gsap } from "gsap";
 import type { WeatherForecast } from "~/types/weather";
 
 const props = defineProps<{
   forecast: WeatherForecast;
   index: number;
 }>();
-
-const cardRef = ref<HTMLElement>();
 
 const getWeatherIcon = (weather: string): string => {
   if (weather.includes("晴")) return "☀️";
@@ -82,21 +84,16 @@ const getRainAdvice = (rain: string): string => {
   return rainProb > 30 ? "記得帶傘" : "不用帶傘";
 };
 
+const formatDate = (timeStr: string): string => {
+  const date = new Date(timeStr);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${month}月${day}日`;
+};
+
 const formatTime = (timeStr: string): string => {
   const date = new Date(timeStr);
   const hours = date.getHours();
   return `${hours.toString().padStart(2, "0")}:00`;
 };
-
-onMounted(() => {
-  if (cardRef.value) {
-    gsap.from(cardRef.value, {
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: props.index * 0.1,
-      ease: "power2.out",
-    });
-  }
-});
 </script>
