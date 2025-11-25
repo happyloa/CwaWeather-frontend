@@ -1,12 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss";
+
 export default {
   // 掃描 app 目錄下的 Vue、TS 檔案以生成對應樣式
   content: [
-    "./app/components/**/*.{js,vue,ts}",
+    "./app/components/**/*.{vue,ts}",
     "./app/layouts/**/*.vue",
     "./app/pages/**/*.vue",
-    "./app/plugins/**/*.{js,ts}",
-    "./app/composables/**/*.{js,ts}",
+    "./app/plugins/**/*.ts",
+    "./app/composables/**/*.ts",
     "./app/app.vue",
   ],
   darkMode: "class",
@@ -34,4 +35,4 @@ export default {
     },
   },
   plugins: [],
-};
+} satisfies Config;
