@@ -1,9 +1,28 @@
-/* 全域 Tailwind 層級設定與客製化工具類別 */
+/*
+ * Tailwind 主要設定集中在此檔案，取代原本的 tailwind.config.ts。
+ * 若日後需要新增設計代號，直接更新這裡即可，方便維護。
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 自訂設計代號與色票 */
 @layer base {
+  :root {
+    --color-light-bg: #ffffff;
+    --color-light-surface: #f5f5f5;
+    --color-light-text: #000000;
+    --color-light-text-secondary: #666666;
+    --color-light-border: #e0e0e0;
+
+    --color-dark-bg: #000000;
+    --color-dark-surface: #1a1a1a;
+    --color-dark-text: #ffffff;
+    --color-dark-text-secondary: #999999;
+    --color-dark-border: #333333;
+  }
+
   body {
     transition: background-color 0.3s, color 0.3s;
     @apply bg-white dark:bg-black;
@@ -24,5 +43,50 @@
 
   .dark .card-shadow {
     box-shadow: 0 10px 15px -3px rgb(17 17 17 / 0.9);
+  }
+
+  /* 將原先 tailwind.config.ts 的顏色與動畫移入 utilities 層，方便直接使用 */
+  .bg-light-bg {
+    background-color: var(--color-light-bg);
+  }
+
+  .bg-light-surface {
+    background-color: var(--color-light-surface);
+  }
+
+  .text-light {
+    color: var(--color-light-text);
+  }
+
+  .text-light-secondary {
+    color: var(--color-light-text-secondary);
+  }
+
+  .border-light {
+    border-color: var(--color-light-border);
+  }
+
+  .bg-dark-bg {
+    background-color: var(--color-dark-bg);
+  }
+
+  .bg-dark-surface {
+    background-color: var(--color-dark-surface);
+  }
+
+  .text-dark {
+    color: var(--color-dark-text);
+  }
+
+  .text-dark-secondary {
+    color: var(--color-dark-text-secondary);
+  }
+
+  .border-dark {
+    border-color: var(--color-dark-border);
+  }
+
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
   }
 }
