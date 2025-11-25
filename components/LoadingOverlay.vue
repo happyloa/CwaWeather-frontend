@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch, onUnmounted } from "vue";
 
 const props = defineProps<{
   show: boolean;
@@ -30,6 +30,21 @@ const emit = defineEmits<{
 }>();
 
 const isVisible = ref(true);
+
+// Prevent scrolling when overlay is visible
+watch(
+  isVisible,
+  (visible) => {
+    if (import.meta.client) {
+      if (visible) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    }
+  },
+  { immediate: true }
+);
 
 watch(
   () => props.show,
@@ -42,4 +57,11 @@ watch(
     }
   }
 );
+
+// Cleanup on unmount
+onUnmounted(() => {
+  if (import.meta.client) {
+    document.body.style.overflow = "";
+  }
+});
 </script>
