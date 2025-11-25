@@ -8,7 +8,9 @@
     <ThemeToggle />
 
     <!-- 主體內容區 -->
-    <div class="container mx-auto px-4 py-12 max-w-7xl">
+    <div
+      class="container mx-auto px-4 py-12 max-w-7xl transition-opacity duration-500"
+      :class="{ 'opacity-0 pointer-events-none select-none': showLoadingOverlay }">
       <!-- 城市切換器 -->
       <div class="mb-12">
         <CitySelector v-model:selected-city="selectedCity" />

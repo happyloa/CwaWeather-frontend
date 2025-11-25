@@ -1,20 +1,16 @@
 <template>
-  <div
-    v-if="isVisible"
-    class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black"
-    data-aos="fade-out"
-    data-aos-delay="1000"
-    data-aos-duration="500">
-    <div class="text-6xl mb-6" data-aos="zoom-in" data-aos-duration="600">
-      ☁️
-    </div>
+  <Transition name="overlay-fade" appear>
     <div
-      class="text-xl font-light text-black dark:text-white"
-      data-aos="fade-up"
-      data-aos-delay="300">
-      載入天氣資料中...
+      v-if="isVisible"
+      class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black">
+      <div class="text-6xl mb-6">
+        ☁️
+      </div>
+      <div class="text-xl font-light text-black dark:text-white">
+        載入天氣資料中...
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -79,3 +75,17 @@ onUnmounted(() => {
   }
 });
 </script>
+
+<style scoped>
+/* 進場／退場皆使用淡入淡出，避免閃爍 */
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
+  opacity: 0;
+  visibility: hidden;
+}
+</style>
