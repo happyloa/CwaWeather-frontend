@@ -19,12 +19,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       // Open Graph 相關資訊
-      title: "台灣天氣預報",
+      title: "台灣六都天氣預報",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "description", content: "台灣六都三天天氣預報" },
-        { property: "og:title", content: "台灣天氣預報" },
+        { property: "og:title", content: "台灣六都天氣預報" },
         {
           property: "og:description",
           content: "快速掌握台灣六都三天天氣預報，支援深淺色主題切換",

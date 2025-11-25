@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading" class="py-8">
-    <LoadingSpinner />
+    <LoadingSkeleton />
   </div>
 
   <div v-else-if="error" class="text-center py-12">
