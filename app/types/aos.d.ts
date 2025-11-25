@@ -1,3 +1,4 @@
+// AOS 套件的 TypeScript 類型定義
 declare module "aos" {
   export interface AosOptions {
     offset?: number;

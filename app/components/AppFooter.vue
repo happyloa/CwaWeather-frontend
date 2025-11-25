@@ -1,4 +1,5 @@
 <template>
+  <!-- 簡潔頁尾，展示專案連結與作者資訊 -->
   <footer
     class="mt-12 py-6 border-t border-gray-200 dark:border-gray-800 text-center">
     <div class="flex flex-col items-center justify-center gap-2">

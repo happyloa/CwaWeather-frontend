@@ -1,5 +1,6 @@
 import type { City, ApiResponse, CityInfo } from "~/types/weather";
 
+// API 網址與城市清單集中管理，便於後續維護
 const API_BASE_URL = "https://hex2025-vibe-coding-week4.zeabur.app/api/weather";
 
 export const CITIES: CityInfo[] = [
@@ -23,6 +24,7 @@ export const useWeatherApi = () => {
       const data: ApiResponse = await response.json();
       return data;
     } catch (error) {
+      // 紀錄錯誤以利除錯
       console.error(`Failed to fetch weather for ${city}:`, error);
       throw error;
     }
