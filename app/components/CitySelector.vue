@@ -1,13 +1,14 @@
 <template>
-  <div class="flex justify-center items-center w-full overflow-x-auto pb-2">
+  <div
+    class="w-full overflow-x-auto pb-3 px-3 sm:px-4 flex justify-start md:justify-center">
     <!-- 城市選單膠囊列，支援橫向卷軸避免擠壓 -->
     <div
-      class="inline-flex gap-2 p-2 bg-gray-100 dark:bg-gray-900 rounded-full shadow-lg">
+      class="inline-flex w-max gap-2 p-2 bg-gray-100 dark:bg-gray-900 rounded-full shadow-lg">
       <button
         v-for="city in cities"
         :key="city.id"
         @click="selectCity(city.id)"
-        class="px-4 md:px-6 py-2 rounded-full font-medium transition-smooth text-sm md:text-base whitespace-nowrap"
+        class="px-3 sm:px-4 md:px-6 py-2 rounded-full font-medium transition-smooth text-sm md:text-base whitespace-nowrap"
         :class="[
           selectedCity === city.id
             ? 'bg-black dark:bg-white text-white dark:text-black shadow-md'

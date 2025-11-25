@@ -14,7 +14,7 @@
     <!-- 城市標題區 -->
     <div class="text-center py-6" data-aos="fade-down">
       <h1
-        class="text-4xl md:text-5xl font-bold mb-2 text-black dark:text-white">
+        class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-black dark:text-white">
         {{ weatherData.city }}
       </h1>
       <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -25,18 +25,18 @@
     <!-- 即時重點天氣區塊 -->
     <div
       v-if="weatherData.forecasts.length > 0"
-      class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700"
+      class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-200 dark:border-gray-700"
       data-aos="zoom-in"
       data-aos-delay="200">
       <div class="text-center">
-        <div class="text-7xl mb-4">
+        <div class="text-5xl sm:text-6xl md:text-7xl mb-4">
           {{ getWeatherIcon(weatherData.forecasts[0].weather) }}
         </div>
-        <div class="text-5xl font-bold mb-2 text-black dark:text-white">
+        <div class="text-4xl sm:text-5xl font-bold mb-2 text-black dark:text-white">
           {{ weatherData.forecasts[0].minTemp }}° -
           {{ weatherData.forecasts[0].maxTemp }}°
         </div>
-        <div class="text-2xl text-gray-700 dark:text-gray-300">
+        <div class="text-xl sm:text-2xl text-gray-700 dark:text-gray-300">
           {{ weatherData.forecasts[0].weather }}
         </div>
       </div>
