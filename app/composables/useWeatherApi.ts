@@ -4,12 +4,12 @@ import type { City, ApiResponse, CityInfo } from "~/types/weather";
 const API_BASE_URL = "https://hex2025-vibe-coding-week4.zeabur.app/api/weather";
 
 export const CITIES: CityInfo[] = [
-  { id: "taipei", name: "台北", endpoint: "/taipei" },
-  { id: "newtaipei", name: "新北", endpoint: "/newtaipei" },
-  { id: "taoyuan", name: "桃園", endpoint: "/taoyuan" },
-  { id: "taichung", name: "台中", endpoint: "/taichung" },
-  { id: "tainan", name: "台南", endpoint: "/tainan" },
-  { id: "kaohsiung", name: "高雄", endpoint: "/kaohsiung" },
+  { id: "taipei", name: "台北市", endpoint: "/taipei" },
+  { id: "newtaipei", name: "新北市", endpoint: "/newtaipei" },
+  { id: "taoyuan", name: "桃園市", endpoint: "/taoyuan" },
+  { id: "taichung", name: "台中市", endpoint: "/taichung" },
+  { id: "tainan", name: "台南市", endpoint: "/tainan" },
+  { id: "kaohsiung", name: "高雄市", endpoint: "/kaohsiung" },
 ];
 
 export const useWeatherApi = () => {
