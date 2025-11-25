@@ -1,6 +1,8 @@
 import type { City, ApiResponse, CityInfo } from "~/types/weather";
 
-// API 網址與城市清單集中管理，便於後續維護
+/**
+ * 集中管理天氣 API 基底網址與城市清單，避免在各組件重複硬編碼。
+ */
 const API_BASE_URL = "https://hex2025-vibe-coding-week4.zeabur.app/api/weather";
 
 export const CITIES: CityInfo[] = [
@@ -13,6 +15,9 @@ export const CITIES: CityInfo[] = [
 ];
 
 export const useWeatherApi = () => {
+  /**
+   * 以城市代碼呼叫對應的 API，並返回標準化的資料結構。
+   */
   const fetchWeather = async (city: City): Promise<ApiResponse> => {
     const cityInfo = CITIES.find((c) => c.id === city);
     if (!cityInfo) {

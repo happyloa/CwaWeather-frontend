@@ -18,6 +18,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: "zh-Hant",
+      },
       // Open Graph 相關資訊
       title: "台灣六都天氣預報",
       meta: [
@@ -30,10 +33,13 @@ export default defineNuxtConfig({
           content: "快速掌握台灣六都三天天氣預報，支援深淺色主題切換",
         },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "/icon-v2.png" },
+        { property: "og:image", content: "/ogImage.webp" },
+        { name: "theme-color", content: "#7de1a9" },
       ],
       link: [
         { rel: "icon", type: "image/png", href: "/favicon.png" },
+        { rel: "apple-touch-icon", href: "/ogImage.webp" },
+        { rel: "apple-touch-icon", sizes: "180x180", href: "/ogImage.webp" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
@@ -42,7 +48,7 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@400;700;900&display=swap",
         },
       ],
     },
