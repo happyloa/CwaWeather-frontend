@@ -83,7 +83,7 @@ const getRainIcon = (rain: string): string => {
 
 const getRainAdvice = (rain: string): string => {
   const rainProb = parseInt(rain);
-  return rainProb > 30 ? "記得帶傘" : "不用帶傘";
+  return rainProb > 30 ? "雨要來囉，記得帶傘☂️" : "放心出門啦😄";
 };
 
 // 將時間字串轉為可讀日期
