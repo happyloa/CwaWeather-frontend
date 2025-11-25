@@ -80,6 +80,8 @@ const applyHeadMeta = () => {
 };
 
 const loadWeatherData = async () => {
+  if (!import.meta.client) return;
+
   isLoading.value = true;
   hasError.value = false;
 
