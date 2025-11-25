@@ -12,21 +12,22 @@
 
   <div v-else-if="weatherData" class="space-y-8">
     <!-- City Header -->
-    <div class="text-center py-6">
+    <div class="text-center py-6" data-aos="fade-down">
       <h1
         class="text-4xl md:text-5xl font-bold mb-2 text-black dark:text-white">
         {{ weatherData.city }}
       </h1>
       <p class="text-sm text-gray-500 dark:text-gray-400">
-        更新時間：{{ formatUpdateTime(weatherData.updateTime) }}
+        {{ weatherData.updateTime }}
       </p>
     </div>
 
     <!-- Current Weather Highlight -->
     <div
       v-if="weatherData.forecasts.length > 0"
-      ref="currentWeatherRef"
-      class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
+      class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700"
+      data-aos="zoom-in"
+      data-aos-delay="200">
       <div class="text-center">
         <div class="text-7xl mb-4">
           {{ getWeatherIcon(weatherData.forecasts[0].weather) }}
@@ -43,7 +44,9 @@
 
     <!-- 3-Day Forecast Grid -->
     <div>
-      <h2 class="text-2xl font-bold mb-4 text-black dark:text-white">
+      <h2
+        class="text-2xl font-bold mb-4 text-black dark:text-white"
+        data-aos="fade-right">
         三天預報
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -58,8 +61,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
-import { gsap } from "gsap";
 import type { WeatherData } from "~/types/weather";
 
 const props = defineProps<{
@@ -67,8 +68,6 @@ const props = defineProps<{
   loading: boolean;
   error: boolean;
 }>();
-
-const currentWeatherRef = ref<HTMLElement>();
 
 const getWeatherIcon = (weather: string): string => {
   if (weather.includes("晴")) return "☀️";
@@ -78,29 +77,4 @@ const getWeatherIcon = (weather: string): string => {
   if (weather.includes("雷")) return "⛈️";
   return "🌤️";
 };
-
-const formatUpdateTime = (timeStr: string): string => {
-  const date = new Date(timeStr);
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  return `${month}月${day}日 ${hours.toString().padStart(2, "0")}:${minutes
-    .toString()
-    .padStart(2, "0")}`;
-};
-
-watch(
-  () => props.weatherData,
-  (newData) => {
-    if (newData && currentWeatherRef.value) {
-      gsap.from(currentWeatherRef.value, {
-        scale: 0.9,
-        opacity: 0,
-        duration: 0.7,
-        ease: "back.out(1.7)",
-      });
-    }
-  }
-);
 </script>
