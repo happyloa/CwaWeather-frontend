@@ -11,7 +11,7 @@
   </div>
 
   <div v-else-if="weatherData" class="space-y-8">
-    <!-- City Header -->
+    <!-- 城市標題區 -->
     <div class="text-center py-6" data-aos="fade-down">
       <h1
         class="text-4xl md:text-5xl font-bold mb-2 text-black dark:text-white">
@@ -22,7 +22,7 @@
       </p>
     </div>
 
-    <!-- Current Weather Highlight -->
+    <!-- 即時重點天氣區塊 -->
     <div
       v-if="weatherData.forecasts.length > 0"
       class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700"
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <!-- 3-Day Forecast Grid -->
+    <!-- 三天預報卡片排列 -->
     <div>
       <h2
         class="text-2xl font-bold mb-4 text-black dark:text-white"
@@ -69,6 +69,7 @@ const props = defineProps<{
   error: boolean;
 }>();
 
+// 依當日天氣描述選擇最合適的 emoji
 const getWeatherIcon = (weather: string): string => {
   if (weather.includes("晴")) return "☀️";
   if (weather.includes("多雲")) return "⛅";

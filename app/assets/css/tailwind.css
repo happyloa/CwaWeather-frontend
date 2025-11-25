@@ -1,3 +1,4 @@
+/* 全域 Tailwind 層級設定與客製化工具類別 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,7 +1,6 @@
 <template>
   <div
     v-if="isVisible"
-    ref="overlayRef"
     class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black"
     data-aos="fade-out"
     data-aos-delay="1000"
@@ -21,6 +20,7 @@
 <script setup lang="ts">
 import { ref, watch, onUnmounted } from "vue";
 
+// 控制蓋版動畫是否顯示的外部屬性
 const props = defineProps<{
   show: boolean;
 }>();
@@ -29,9 +29,11 @@ const emit = defineEmits<{
   hide: [];
 }>();
 
-const isVisible = ref(true);
+const isVisible = ref(props.show);
+const overlayHideDelay = 400;
+let hideTimer: ReturnType<typeof setTimeout> | null = null;
 
-// Prevent scrolling when overlay is visible
+// 依顯示狀態鎖定／解鎖頁面滾動
 watch(
   isVisible,
   (visible) => {
@@ -46,20 +48,32 @@ watch(
   { immediate: true }
 );
 
+// 根據父層傳入的 show 控制顯示與隱藏
 watch(
   () => props.show,
   (newVal) => {
-    if (!newVal) {
-      setTimeout(() => {
-        isVisible.value = false;
-        emit("hide");
-      }, 1500);
+    if (newVal) {
+      isVisible.value = true;
+      return;
     }
+
+    if (hideTimer) {
+      clearTimeout(hideTimer);
+    }
+
+    hideTimer = setTimeout(() => {
+      isVisible.value = false;
+      emit("hide");
+    }, overlayHideDelay);
   }
 );
 
-// Cleanup on unmount
+// 元件卸載時移除計時器並恢復滾動
 onUnmounted(() => {
+  if (hideTimer) {
+    clearTimeout(hideTimer);
+  }
+
   if (import.meta.client) {
     document.body.style.overflow = "";
   }

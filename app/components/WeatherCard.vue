@@ -1,4 +1,5 @@
 <template>
+  <!-- 單一卡片呈現某時段的天氣資訊 -->
   <div
     class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-800 transition-smooth"
     data-aos="fade-up"
@@ -65,6 +66,7 @@ const props = defineProps<{
   index: number;
 }>();
 
+// 依天氣描述對應 emoji，讓畫面更直覺
 const getWeatherIcon = (weather: string): string => {
   if (weather.includes("晴")) return "☀️";
   if (weather.includes("多雲")) return "⛅";
@@ -84,6 +86,7 @@ const getRainAdvice = (rain: string): string => {
   return rainProb > 30 ? "記得帶傘" : "不用帶傘";
 };
 
+// 將時間字串轉為可讀日期
 const formatDate = (timeStr: string): string => {
   const date = new Date(timeStr);
   const month = date.getMonth() + 1;
@@ -91,6 +94,7 @@ const formatDate = (timeStr: string): string => {
   return `${month}月${day}日`;
 };
 
+// 取出小時資訊，顯示為 24 小時制
 const formatTime = (timeStr: string): string => {
   const date = new Date(timeStr);
   const hours = date.getHours();

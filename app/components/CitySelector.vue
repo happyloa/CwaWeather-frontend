@@ -1,5 +1,6 @@
 <template>
   <div class="flex justify-center items-center w-full overflow-x-auto pb-2">
+    <!-- 城市選單膠囊列，支援橫向卷軸避免擠壓 -->
     <div
       class="inline-flex gap-2 p-2 bg-gray-100 dark:bg-gray-900 rounded-full shadow-lg">
       <button
@@ -30,6 +31,7 @@ const emit = defineEmits<{
   "update:selectedCity": [city: City];
 }>();
 
+// 直接使用預先整理好的城市清單
 const cities = CITIES;
 
 const selectCity = (city: City) => {
