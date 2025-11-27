@@ -26,6 +26,7 @@ const emit = defineEmits<{
 }>();
 
 const isVisible = ref(props.show);
+// 與 Transition 時間同步，避免卸載時畫面跳動
 const overlayHideDelay = 400;
 let hideTimer: ReturnType<typeof setTimeout> | null = null;
 

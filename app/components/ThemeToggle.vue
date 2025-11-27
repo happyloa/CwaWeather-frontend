@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-// 由 color-mode 模組取得當前主題設定
+// 由 color-mode 模組取得當前主題設定（會自動寫入 localStorage）
 const colorMode = useColorMode();
 
 const toggleTheme = () => {

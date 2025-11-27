@@ -63,6 +63,7 @@
 <script setup lang="ts">
 import type { WeatherData } from "~/types/weather";
 
+// 由父層傳入資料與狀態，用於切換骨架、錯誤訊息或實際天氣內容
 const props = defineProps<{
   weatherData: WeatherData | null;
   loading: boolean;

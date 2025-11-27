@@ -26,6 +26,7 @@ export const useWeatherApi = () => {
 
     try {
       const response = await fetch(`${API_BASE_URL}${cityInfo.endpoint}`);
+      // API 已封裝成統一格式（success + data），前端僅需處理回傳值
       const data: ApiResponse = await response.json();
       return data;
     } catch (error) {
