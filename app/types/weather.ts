@@ -7,6 +7,7 @@ export interface WeatherForecast {
   minTemp: string;
   maxTemp: string;
   comfort: string;
+  // 來源 API 可能傳回空字串，統一維持字串格式方便直接渲染
   windSpeed: string;
 }
 

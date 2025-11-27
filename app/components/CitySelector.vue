@@ -35,6 +35,7 @@ const emit = defineEmits<{
 // 直接使用預先整理好的城市清單
 const cities = CITIES;
 
+// 將使用者選擇透過 v-model 往父層回傳，維持單一資料來源
 const selectCity = (city: City) => {
   emit("update:selectedCity", city);
 };

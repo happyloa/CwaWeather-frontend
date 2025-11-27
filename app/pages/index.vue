@@ -52,6 +52,7 @@ const overlayDuration = 2000;
 
 const selectedCityName = computed(() => CITIES.find((city) => city.id === selectedCity.value)?.name ?? "");
 
+// 解析網址參數（例如分享連結）並在初次載入時套用到城市狀態
 const setInitialCityFromQuery = () => {
   const queryCity = route.query.currentCity;
   if (typeof queryCity === "string" && CITIES.some((city) => city.id === queryCity)) {
@@ -59,6 +60,7 @@ const setInitialCityFromQuery = () => {
   }
 };
 
+// 依目前城市動態組合標題／OG 資訊，避免 Meta 與畫面不同步
 const applyHeadMeta = () => {
   useHead(() => {
     const title = selectedCityName.value
@@ -98,6 +100,7 @@ const loadWeatherData = async () => {
   }
 };
 
+// 將選取的城市寫回網址，確保重新整理或分享時能保持同一城市
 const syncQueryWithCity = (city: City) => {
   if (!import.meta.client) return;
 
