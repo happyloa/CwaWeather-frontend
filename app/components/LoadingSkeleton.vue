@@ -1,34 +1,36 @@
 <template>
-  <div class="space-y-8 animate-pulse" data-testid="loading-skeleton">
+  <div class="space-y-8" data-testid="loading-skeleton">
     <!-- 城市標題骨架 -->
-    <div class="text-center py-6">
-      <div class="mx-auto h-10 w-32 bg-gray-200 dark:bg-gray-800 rounded-full"></div>
-      <div class="mt-3 mx-auto h-4 w-48 bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+    <div class="panel p-6 md:p-8 animate-pulse">
+      <div class="flex flex-col gap-3">
+        <div class="h-3 w-28 rounded-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
+        <div class="h-7 w-56 rounded-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
+        <div class="h-4 w-36 rounded-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
+      </div>
     </div>
 
     <!-- 今日重點天氣骨架 -->
-    <div
-      class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-200 dark:border-gray-700">
-      <div class="flex flex-col items-center space-y-4">
-        <div class="h-16 w-16 rounded-full bg-gray-200 dark:bg-gray-800"></div>
-        <div class="h-10 w-40 bg-gray-200 dark:bg-gray-800 rounded-lg"></div>
-        <div class="h-6 w-32 bg-gray-200 dark:bg-gray-800 rounded-lg"></div>
+    <div class="panel p-6 md:p-8 animate-pulse">
+      <div class="flex flex-col items-center gap-4">
+        <div class="h-16 w-16 rounded-full bg-gradient-to-br from-aurora/20 to-nebula/20"></div>
+        <div class="h-10 w-40 rounded-lg bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
+        <div class="h-5 w-28 rounded-lg bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
       </div>
     </div>
 
     <!-- 三天預報骨架卡片 -->
-    <div>
-      <div class="h-6 w-24 bg-gray-200 dark:bg-gray-800 rounded-full mb-4"></div>
+    <div class="space-y-3">
+      <div class="h-4 w-24 rounded-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
           v-for="index in 3"
           :key="index"
-          class="p-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900">
-          <div class="h-5 w-24 bg-gray-200 dark:bg-gray-800 rounded-full mb-3"></div>
-          <div class="h-10 w-16 bg-gray-200 dark:bg-gray-800 rounded-lg mb-3"></div>
+          class="panel p-5 animate-pulse">
+          <div class="h-3 w-24 rounded-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-3"></div>
+          <div class="h-10 w-20 rounded-lg bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 mb-4"></div>
           <div class="space-y-2">
-            <div class="h-4 w-full bg-gray-200 dark:bg-gray-800 rounded"></div>
-            <div class="h-4 w-3/4 bg-gray-200 dark:bg-gray-800 rounded"></div>
+            <div class="h-3 w-full rounded bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
+            <div class="h-3 w-3/4 rounded bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
           </div>
         </div>
       </div>

@@ -2,12 +2,19 @@
   <Transition name="overlay-fade" appear>
     <div
       v-if="isVisible"
-      class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-black">
-      <div class="text-6xl mb-6">
-        ☁️
-      </div>
-      <div class="text-xl font-light text-black dark:text-white">
-        載入天氣資料中...
+      class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black via-slate-950 to-midnight">
+      <div class="panel panel-grid px-10 py-8 text-center max-w-md">
+        <div class="relative flex items-center justify-center mx-auto h-28 w-28 mb-6">
+          <div class="absolute inset-0 rounded-full border border-aurora/40 animate-pulse-glow"></div>
+          <div class="absolute inset-4 rounded-full border border-aurora/40 animate-spin-slow"></div>
+          <div class="absolute inset-0 rounded-full bg-aurora/10 blur-3xl"></div>
+          <div class="relative text-4xl text-aurora">☄️</div>
+        </div>
+        <p class="text-xs uppercase tracking-[0.38em] text-aurora mb-2">Initializing</p>
+        <p class="text-2xl font-semibold text-white">同步星際氣象資料中</p>
+        <p class="mt-3 text-sm text-slate-400">
+          最佳化動畫、無感載入，請稍候數秒完成連線。
+        </p>
       </div>
     </div>
   </Transition>

@@ -34,7 +34,7 @@ export default defineNuxtConfig({
         },
         { property: "og:type", content: "website" },
         { property: "og:image", content: "/ogImage.webp" },
-        { name: "theme-color", content: "#7de1a9" },
+        { name: "theme-color", content: "#24e0d1" },
       ],
       link: [
         { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -48,7 +48,8 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@400;700;900&display=swap",
+          href:
+            "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap",
         },
       ],
     },

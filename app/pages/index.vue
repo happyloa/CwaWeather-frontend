@@ -1,30 +1,88 @@
 <template>
-  <div
-    class="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+  <div class="min-h-screen relative overflow-hidden">
     <!-- 進站時的蓋版動畫，確保重新整理也會展示 -->
     <LoadingOverlay :show="showLoadingOverlay" @hide="onLoadingOverlayHide" />
 
     <!-- 主題切換按鈕 -->
     <ThemeToggle />
 
-    <!-- 主體內容區 -->
-    <div
-      class="container mx-auto px-4 py-12 max-w-7xl transition-opacity duration-500"
-      :class="{ 'opacity-0 pointer-events-none select-none': showLoadingOverlay }">
-      <!-- 城市切換器 -->
-      <div class="mb-12">
-        <CitySelector v-model:selected-city="selectedCity" />
-      </div>
+    <!-- 背景裝飾 -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -left-32 -top-24 h-72 w-72 rounded-full bg-aurora/30 blur-3xl"></div>
+      <div class="absolute right-10 -bottom-24 h-80 w-80 rounded-full bg-nebula/25 blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.06),transparent_30%)]"></div>
+    </div>
 
-      <!-- 天氣資訊展示區 -->
-      <WeatherDisplay
-        :weather-data="weatherData"
-        :loading="isLoading"
-        :error="hasError" />
+    <!-- 主體內容區 -->
+    <main
+      class="relative z-10 container mx-auto max-w-6xl px-4 py-12 space-y-10 transition-opacity duration-500"
+      :class="{ 'opacity-0 pointer-events-none select-none': showLoadingOverlay }">
+      <section class="panel panel-grid p-6 md:p-8">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="space-y-2">
+              <p class="text-xs uppercase tracking-[0.38em] text-aurora font-display">
+                Starfleet Weather Relay
+              </p>
+              <h1 class="text-3xl md:text-4xl font-bold gradient-text">
+                台灣六都天氣預報
+              </h1>
+              <p class="text-sm text-slate-300 max-w-2xl leading-relaxed">
+                以星際艦隊控制台重新詮釋的天氣介面，快速巡覽六都三天天氣走勢，支援深色模式、動態動畫與觸控友好的城市切換。
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="chip">Live Sync</span>
+              <span class="chip border-nebula/40 bg-nebula/10 text-slate-100">
+                多城市即時切換
+              </span>
+            </div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-3 items-stretch">
+            <div class="md:col-span-2">
+              <CitySelector v-model:selected-city="selectedCity" />
+            </div>
+            <div class="panel bg-white/5 border-white/10 glass-outline p-4 flex flex-col justify-between">
+              <div class="space-y-3">
+                <p class="text-xs uppercase tracking-[0.26em] text-slate-400">
+                  目前目標城市
+                </p>
+                <p class="text-lg font-semibold text-white">
+                  {{ selectedCityName || "尚未選擇" }}
+                </p>
+                <p class="text-xs text-slate-400">
+                  更新時間：{{ weatherData?.updateTime || "等待資料同步" }}
+                </p>
+              </div>
+              <div class="holo-line mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p class="text-xs uppercase tracking-[0.32em] text-slate-300">Mission Status</p>
+            <div class="holo-line mt-2"></div>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-slate-300">
+            <span class="chip">深淺色一鍵切換</span>
+            <span class="chip border-nebula/40 bg-nebula/10 text-slate-100">觸控友好手勢</span>
+            <span class="chip">無障礙色彩對比</span>
+          </div>
+        </div>
+
+        <WeatherDisplay
+          :weather-data="weatherData"
+          :loading="isLoading"
+          :error="hasError" />
+      </section>
 
       <!-- 網站頁尾 -->
       <AppFooter />
-    </div>
+    </main>
   </div>
 </template>
 
