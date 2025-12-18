@@ -1,14 +1,13 @@
 <template>
   <!-- 簡潔頁尾，展示專案連結與作者資訊 -->
-  <footer
-    class="mt-12 py-6 border-t border-gray-200 dark:border-gray-800 text-center">
-    <div class="flex flex-col items-center justify-center gap-3">
+  <footer class="mt-12 py-8 glass-panel rounded-3xl border border-white/10 text-center shadow-2xl">
+    <div class="flex flex-col items-center justify-center gap-4">
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-6">
         <a
           href="https://github.com/happyloa/CwaWeather-frontend"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-gray-300 hover:dark:border-gray-600 transition-colors">
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/30 bg-white/5 text-slate-100 hover:border-fuchsia-300/50 transition-colors neon-pill">
           <svg
             height="20"
             width="20"
@@ -24,7 +23,7 @@
           href="https://github.com/happyloa/weather-backend"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-gray-300 hover:dark:border-gray-600 transition-colors">
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/30 bg-white/5 text-slate-100 hover:border-fuchsia-300/50 transition-colors neon-pill">
           <svg
             height="20"
             width="20"
@@ -37,7 +36,7 @@
           <span class="text-sm font-medium">後端程式碼</span>
         </a>
       </div>
-      <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 text-center">
+      <p class="text-xs md:text-sm text-slate-300 text-center">
         六角 2025 Vibe Coding 公益程式體驗營主線任務四 | 個人天氣 App 全端系統
         by Aaron
       </p>

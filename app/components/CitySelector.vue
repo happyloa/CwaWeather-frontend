@@ -1,19 +1,17 @@
 <template>
-  <div
-    class="w-full overflow-x-auto pb-3 px-3 sm:px-4 flex justify-start md:justify-center">
-    <!-- 城市選單膠囊列，支援橫向卷軸避免擠壓 -->
-    <div
-      class="inline-flex w-max gap-2 p-2 bg-gray-100 dark:bg-gray-900 rounded-full shadow-lg">
+  <div class="w-full overflow-x-auto pb-4 px-2 sm:px-3 flex justify-start md:justify-center">
+    <div class="inline-flex w-max gap-2 p-2 rounded-2xl glass-panel glow-border border border-white/10">
       <button
         v-for="city in cities"
         :key="city.id"
         @click="selectCity(city.id)"
-        class="px-3 sm:px-4 md:px-6 py-2 rounded-full font-medium transition-smooth text-sm md:text-base whitespace-nowrap"
+        class="relative px-4 sm:px-5 md:px-6 py-2.5 rounded-full font-semibold transition-smooth text-sm md:text-base whitespace-nowrap tracking-wide"
         :class="[
           selectedCity === city.id
-            ? 'bg-black dark:bg-white text-white dark:text-black shadow-md'
-            : 'bg-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800',
+            ? 'bg-gradient-to-r from-cyan-500/40 to-fuchsia-500/40 text-white neon-pill ring-1 ring-cyan-300/50 shadow-[0_10px_35px_rgba(91,240,255,0.25)]'
+            : 'bg-white/5 text-slate-200 hover:text-white hover:bg-white/10 border border-transparent hover:border-cyan-400/30',
         ]">
+        <span class="absolute inset-x-6 -top-[6px] h-[2px] rounded-full accent-bar opacity-70"></span>
         {{ city.name }}
       </button>
     </div>

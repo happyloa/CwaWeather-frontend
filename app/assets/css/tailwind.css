@@ -10,24 +10,63 @@
 /* 自訂設計代號與色票 */
 @layer base {
   :root {
-    --color-light-bg: #ffffff;
-    --color-light-surface: #f5f5f5;
-    --color-light-text: #000000;
-    --color-light-text-secondary: #666666;
-    --color-light-border: #e0e0e0;
-
-    --color-dark-bg: #000000;
-    --color-dark-surface: #1a1a1a;
-    --color-dark-text: #ffffff;
-    --color-dark-text-secondary: #999999;
-    --color-dark-border: #333333;
+    --color-neon-cyan: #5bf0ff;
+    --color-neon-magenta: #ff7efc;
+    --color-amber: #f7d046;
+    --surface-dark: #0a0f1c;
+    --surface-darker: #060914;
+    --surface-light: #0f172a;
+    --text-primary: #e6f1ff;
+    --text-muted: #9fb3ce;
+    --border-glow: rgba(91, 240, 255, 0.35);
   }
 
   body {
+    min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
-    @apply bg-white dark:bg-black;
-    @apply text-black dark:text-white;
-    font-family: "Zen Maru Gothic", "Noto Sans TC", sans-serif;
+    color: var(--text-primary);
+    background: radial-gradient(circle at 10% 20%, rgba(91, 240, 255, 0.08), transparent 28%),
+      radial-gradient(circle at 80% 10%, rgba(255, 126, 252, 0.1), transparent 28%),
+      radial-gradient(circle at 50% 80%, rgba(247, 208, 70, 0.07), transparent 32%),
+      linear-gradient(135deg, #050910 0%, #0b1324 45%, #050910 100%);
+    font-family: "Space Grotesk", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  .dark body {
+    background: radial-gradient(circle at 12% 18%, rgba(91, 240, 255, 0.12), transparent 28%),
+      radial-gradient(circle at 82% 12%, rgba(255, 126, 252, 0.12), transparent 28%),
+      radial-gradient(circle at 54% 84%, rgba(247, 208, 70, 0.08), transparent 32%),
+      linear-gradient(145deg, #04070f 0%, #0a0f1c 50%, #04070f 100%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 120px 120px;
+    opacity: 0.35;
+    mask-image: radial-gradient(circle at center, black, transparent 70%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(91, 240, 255, 0.08) 0%, transparent 45%);
+    filter: blur(80px);
+    opacity: 0.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Orbitron", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.08em;
   }
 }
 
@@ -45,48 +84,28 @@
     box-shadow: 0 10px 15px -3px rgb(17 17 17 / 0.9);
   }
 
-  /* 將原先 tailwind.config.ts 的顏色與動畫移入 utilities 層，方便直接使用 */
-  .bg-light-bg {
-    background-color: var(--color-light-bg);
-  }
-
-  .bg-light-surface {
-    background-color: var(--color-light-surface);
-  }
-
-  .text-light {
-    color: var(--color-light-text);
-  }
-
-  .text-light-secondary {
-    color: var(--color-light-text-secondary);
-  }
-
-  .border-light {
-    border-color: var(--color-light-border);
-  }
-
-  .bg-dark-bg {
-    background-color: var(--color-dark-bg);
-  }
-
-  .bg-dark-surface {
-    background-color: var(--color-dark-surface);
-  }
-
-  .text-dark {
-    color: var(--color-dark-text);
-  }
-
-  .text-dark-secondary {
-    color: var(--color-dark-text-secondary);
-  }
-
-  .border-dark {
-    border-color: var(--color-dark-border);
-  }
-
   .animate-spin-slow {
     animation: spin 2s linear infinite;
+  }
+
+  .glass-panel {
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 10px 45px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(91, 240, 255, 0.12);
+    backdrop-filter: blur(20px);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(91, 240, 255, 0.4), 0 10px 40px rgba(91, 240, 255, 0.08);
+    border-image: linear-gradient(120deg, rgba(91, 240, 255, 0.5), rgba(255, 126, 252, 0.35)) 1;
+  }
+
+  .neon-pill {
+    box-shadow: 0 8px 30px rgba(91, 240, 255, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .accent-bar {
+    background: linear-gradient(90deg, rgba(91, 240, 255, 0.8), rgba(255, 126, 252, 0.8));
+    box-shadow: 0 4px 20px rgba(91, 240, 255, 0.45);
   }
 }
