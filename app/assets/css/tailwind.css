@@ -10,24 +10,53 @@
 /* 自訂設計代號與色票 */
 @layer base {
   :root {
-    --color-light-bg: #ffffff;
-    --color-light-surface: #f5f5f5;
-    --color-light-text: #000000;
-    --color-light-text-secondary: #666666;
-    --color-light-border: #e0e0e0;
+    --color-light-bg: #edf2ff;
+    --color-light-surface: rgba(255, 255, 255, 0.72);
+    --color-light-text: #0b1021;
+    --color-light-text-secondary: #4b5563;
+    --color-light-border: #cbd5e1;
+    --color-light-glow: #0ea5e9;
+    --bg-pattern: radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.18), transparent 26%),
+      radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.16), transparent 25%),
+      linear-gradient(120deg, rgba(14, 165, 233, 0.08), rgba(14, 116, 144, 0.06)),
+      linear-gradient(0deg, rgba(12, 10, 33, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(12, 10, 33, 0.05) 1px, transparent 1px);
+    --bg-color: #e9effd;
+    --grid-size: 140px 140px;
+  }
 
-    --color-dark-bg: #000000;
-    --color-dark-surface: #1a1a1a;
-    --color-dark-text: #ffffff;
-    --color-dark-text-secondary: #999999;
-    --color-dark-border: #333333;
+  .dark {
+    --color-dark-bg: #030712;
+    --color-dark-surface: rgba(11, 18, 32, 0.72);
+    --color-dark-text: #e2e8f0;
+    --color-dark-text-secondary: #94a3b8;
+    --color-dark-border: #1f2937;
+    --color-dark-glow: #0ea5e9;
+    --bg-pattern: radial-gradient(circle at 15% 25%, rgba(34, 211, 238, 0.16), transparent 26%),
+      radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.15), transparent 25%),
+      linear-gradient(120deg, rgba(59, 130, 246, 0.08), rgba(14, 165, 233, 0.05)),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    --bg-color: #030712;
+    --grid-size: 160px 160px;
   }
 
   body {
-    transition: background-color 0.3s, color 0.3s;
-    @apply bg-white dark:bg-black;
+    transition: background-color 0.4s, color 0.4s;
+    background-color: var(--bg-color);
+    background-image: var(--bg-pattern);
+    background-size: auto, auto, 100% 100%, var(--grid-size), var(--grid-size);
     @apply text-black dark:text-white;
-    font-family: "Zen Maru Gothic", "Noto Sans TC", sans-serif;
+    font-family: "Space Grotesk", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: "Orbitron", "Space Grotesk", "Noto Sans TC", system-ui, sans-serif;
+    letter-spacing: 0.08em;
   }
 }
 
@@ -45,48 +74,40 @@
     box-shadow: 0 10px 15px -3px rgb(17 17 17 / 0.9);
   }
 
-  /* 將原先 tailwind.config.ts 的顏色與動畫移入 utilities 層，方便直接使用 */
-  .bg-light-bg {
-    background-color: var(--color-light-bg);
-  }
-
-  .bg-light-surface {
-    background-color: var(--color-light-surface);
-  }
-
-  .text-light {
-    color: var(--color-light-text);
-  }
-
-  .text-light-secondary {
-    color: var(--color-light-text-secondary);
-  }
-
-  .border-light {
-    border-color: var(--color-light-border);
-  }
-
-  .bg-dark-bg {
-    background-color: var(--color-dark-bg);
-  }
-
-  .bg-dark-surface {
-    background-color: var(--color-dark-surface);
-  }
-
-  .text-dark {
-    color: var(--color-dark-text);
-  }
-
-  .text-dark-secondary {
-    color: var(--color-dark-text-secondary);
-  }
-
-  .border-dark {
-    border-color: var(--color-dark-border);
-  }
-
   .animate-spin-slow {
     animation: spin 2s linear infinite;
+  }
+
+  .glass-panel {
+    @apply border border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .neon-border {
+    box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.35), 0 0 22px rgba(14, 165, 233, 0.25),
+      0 15px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  .accent-pill {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.25em];
+    @apply border-cyan-400/50 text-cyan-800 dark:text-cyan-100 bg-cyan-50/60 dark:bg-cyan-400/10;
+  }
+
+  .grid-sheen {
+    background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+    background-size: 200% 200%;
+    animation: sheen 4s ease-in-out infinite;
+  }
+
+  @keyframes sheen {
+    0% {
+      background-position: 200% 200%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 200% 200%;
+    }
   }
 }

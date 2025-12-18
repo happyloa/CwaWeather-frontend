@@ -3,10 +3,21 @@
   <button
     type="button"
     @click="toggleTheme"
-    class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-smooth shadow-xl drop-shadow"
+    class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 px-4 py-3 rounded-full glass-panel neon-border hover:scale-105 transition-smooth shadow-xl drop-shadow backdrop-blur-2xl"
     aria-label="Toggle theme">
-    <div class="text-2xl">
-      {{ colorMode.value === "dark" ? "🌙" : "☀️" }}
+    <div class="flex items-center gap-2">
+      <div
+        class="h-9 w-9 rounded-full flex items-center justify-center bg-gradient-to-br from-cyan-400 to-sky-500 text-slate-900 font-semibold shadow-[0_10px_35px_rgba(14,165,233,0.35)]">
+        {{ colorMode.value === "dark" ? "☀️" : "🌙" }}
+      </div>
+      <div class="hidden sm:flex flex-col text-left leading-none">
+        <span class="text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+          Mode
+        </span>
+        <span class="text-xs font-semibold text-slate-900 dark:text-white">
+          {{ colorMode.value === "dark" ? "Light" : "Dark" }}
+        </span>
+      </div>
     </div>
   </button>
 </template>

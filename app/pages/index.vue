@@ -1,6 +1,10 @@
 <template>
-  <div
-    class="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+  <div class="relative min-h-screen overflow-hidden transition-colors duration-300">
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-cyan-400/10 via-transparent to-fuchsia-500/10 blur-3xl pointer-events-none" />
+    <div
+      class="absolute inset-0 opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.25),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(236,72,153,0.18),transparent_25%),linear-gradient(120deg,rgba(14,165,233,0.08),rgba(99,102,241,0.05))]" />
+
     <!-- 進站時的蓋版動畫，確保重新整理也會展示 -->
     <LoadingOverlay :show="showLoadingOverlay" @hide="onLoadingOverlayHide" />
 
@@ -9,10 +13,21 @@
 
     <!-- 主體內容區 -->
     <div
-      class="container mx-auto px-4 py-12 max-w-7xl transition-opacity duration-500"
+      class="relative z-10 container mx-auto px-4 py-12 max-w-6xl transition-opacity duration-500"
       :class="{ 'opacity-0 pointer-events-none select-none': showLoadingOverlay }">
+      <div class="flex flex-col items-center text-center space-y-4 mb-10">
+        <span class="accent-pill font-display">Starfleet Weather Bridge</span>
+        <h1
+          class="font-display text-4xl sm:text-5xl md:text-6xl text-slate-900 dark:text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
+          Galactic Forecast Console
+        </h1>
+        <p class="max-w-2xl text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          即刻掌握台灣六都的三日預報，帶著星艦艙橋般的科技感介面，伴你穿梭日夜與風雨。
+        </p>
+      </div>
+
       <!-- 城市切換器 -->
-      <div class="mb-12">
+      <div class="mb-10">
         <CitySelector v-model:selected-city="selectedCity" />
       </div>
 

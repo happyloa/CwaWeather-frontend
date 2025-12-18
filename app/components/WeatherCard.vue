@@ -1,15 +1,15 @@
 <template>
   <!-- 單一卡片呈現某時段的天氣資訊 -->
   <div
-    class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-800 transition-smooth"
+    class="rounded-2xl p-6 glass-panel transition-smooth hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.25)] neon-border"
     data-aos="fade-up"
     :data-aos-delay="index * 100">
     <div class="flex justify-between items-start mb-4">
       <div class="space-y-1">
-        <div class="text-xs text-gray-400 dark:text-gray-500">
+        <div class="text-[11px] uppercase tracking-[0.28em] text-cyan-400 font-display">
           {{ formatDate(forecast.startTime) }}
         </div>
-        <div class="text-sm text-gray-500 dark:text-gray-400">
+        <div class="text-sm text-slate-500 dark:text-slate-400">
           {{ formatTime(forecast.startTime) }} -
           {{ formatTime(forecast.endTime) }}
         </div>
@@ -20,39 +20,31 @@
     </div>
 
     <div class="mb-4">
-      <div class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+      <div class="text-lg font-semibold text-slate-900 dark:text-white mb-2">
         {{ forecast.weather }}
       </div>
-      <div class="text-3xl font-bold text-black dark:text-white">
+      <div class="text-3xl font-bold text-slate-900 dark:text-white">
         {{ forecast.minTemp }}° - {{ forecast.maxTemp }}°
       </div>
     </div>
 
     <div
-      class="grid grid-cols-2 gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
-      <div class="flex items-center gap-2">
+      class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-200/60 dark:border-slate-700/80">
+      <div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
         <span class="text-xl">💧</span>
-        <span class="text-sm text-gray-600 dark:text-gray-400"
-          >降雨率 {{ forecast.rain }}</span
-        >
+        <span>降雨率 {{ forecast.rain }}</span>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
         <span class="text-xl">{{ getRainIcon(forecast.rain) }}</span>
-        <span class="text-sm text-gray-600 dark:text-gray-400">{{
-          getRainAdvice(forecast.rain)
-        }}</span>
+        <span>{{ getRainAdvice(forecast.rain) }}</span>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
         <span class="text-xl">🌡️</span>
-        <span class="text-sm text-gray-600 dark:text-gray-400">{{
-          forecast.comfort
-        }}</span>
+        <span>{{ forecast.comfort }}</span>
       </div>
-      <div v-if="forecast.windSpeed" class="flex items-center gap-2">
+      <div v-if="forecast.windSpeed" class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
         <span class="text-xl">💨</span>
-        <span class="text-sm text-gray-600 dark:text-gray-400">{{
-          forecast.windSpeed
-        }}</span>
+        <span>{{ forecast.windSpeed }}</span>
       </div>
     </div>
   </div>
